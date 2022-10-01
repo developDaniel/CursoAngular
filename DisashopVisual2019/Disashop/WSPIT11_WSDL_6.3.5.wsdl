@@ -1,0 +1,1680 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="WebServicePIT" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="IWSPIT" targetNamespace="WebServicePIT">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="WebServicePIT">
+			<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<xs:import namespace="http://schemas.datacontract.org/2004/07/System"/>
+			<xs:element name="AuthHeader">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="UserName" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="Password" type="xs:string"/>
+					</xs:sequence>
+					<xs:anyAttribute/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="recarga">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="importe" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="vendedor" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="parametros" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="recargaResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="recargaResult" type="tns:RetornoRE"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="devolucion">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="importe" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="vendedor" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaClienteRecarga" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedorRecarga" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idioma" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="devolucionResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="devolucionResult" type="tns:RetornoDE"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="consultaEstado">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaClienteRecarga" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedorRecarga" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="consultaEstadoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="consultaEstadoResult" type="tns:RetornoCE"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="consultaSaldo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="consultaSaldoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="consultaSaldoResult" type="tns:RetornoCS"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="finDia">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="numTicket" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="finDiaResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="finDiaResult" type="tns:RetornoFD"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="test">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="testResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="testResult" type="tns:RetornoTE"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="activacion">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="identificadorTPV" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="codigo" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="token" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="activacionResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="activacionResult" type="tns:RetornoAC"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="altaTerminal">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idClienteExterno" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="nombre" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="direccion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="codigoPostal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idProvincia" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idPoblacion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="numeroCuenta" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="nif" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="movil" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fax" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="email" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="altaTerminalResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="altaTerminalResult" type="tns:RetornoAT"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="informeTransacciones">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaInicio" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaFin" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="informeTransaccionesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="informeTransaccionesResult" type="tns:ArrayOfRetornoIT"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="informeTransaccionesFiltrado">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaInicio" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaFin" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="tipoTransaccion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="estadoTransaccion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedor" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="numResultados" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="totales" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="informeTransaccionesFiltradoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="informeTransaccionesFiltradoResult" type="tns:ArrayOfRetornoIT"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="informeMovimientosBancarios">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="minutos" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="informeMovimientosBancariosResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="informeMovimientosBancariosResult" type="tns:ArrayOfRetornoIM"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="consultaTerminal">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="consultaTerminalResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="consultaTerminalResult" type="tns:RetornoCT"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="comprobarAnticipo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="comprobarAnticipoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="comprobarAnticipoResult" type="tns:RetornoAN"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="consultaEstadoAvanzada">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaClienteRecarga" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedorRecarga" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="consultaEstadoAvanzadaResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="consultaEstadoAvanzadaResult" type="tns:RetornoEA"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gestionMenuProductos">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gestionMenuProductosResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="gestionMenuProductosResult" type="tns:ArrayOfRetornoOP"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerTicket">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaClienteRecarga" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaHora" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerTicketResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="obtenerTicketResult" type="tns:RetornoOT"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerListadoInformes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerListadoInformesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="obtenerListadoInformesResult" type="tns:RetornoOLI"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerInforme">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idInforme" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerInformeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="obtenerInformeResult" type="tns:RetornoSTD"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formularioVentaProducto">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idProducto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idioma" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idSesion" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formularioVentaProductoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="formularioVentaProductoResult" type="tns:RetornoSTDEx"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formularioCampoDependiente">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idProducto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="dependeDe" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="valorCampoOrigen" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCampoDestino" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="claveDependencia" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idSesion" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formularioCampoDependienteResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="formularioCampoDependienteResult" type="tns:RetornoFCD"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formularioMenuProductos">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="disponibleAuto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idFamilia" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idSubfamilia" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="nuevo" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idioma" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formularioMenuProductosResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="formularioMenuProductosResult" type="tns:RetornoSTD"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formularioFamilias">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idioma" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formularioFamiliasResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="formularioFamiliasResult" type="tns:RetornoSTD"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="solicitud">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="vendedor" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idProducto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="numTicket" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idioma" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idSesion" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="solicitudResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="solicitudResult" type="tns:RetornoSO"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="devolucionSolicitud">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="vendedor" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaClienteRecarga" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="numTicket" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idioma" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="devolucionSolicitudResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="devolucionSolicitudResult" type="tns:RetornoDS"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerConversionMonedas">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idProducto" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerConversionMonedasResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="obtenerConversionMonedasResult" type="tns:RetornoSTD"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getInformeAplicacion">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getInformeAplicacionResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="getInformeAplicacionResult" type="tns:RetornoIA"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getIdiomas">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getIdiomasResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="getIdiomasResult" type="tns:RetornoSTD"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getPantallasProducto">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idProducto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idioma" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getPantallasProductoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="getPantallasProductoResult" type="tns:RetornoSTD"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getCuentasBancarias">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="idcliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getCuentasBancariasResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="getCuentasBancariasResult" type="tns:RetornoGCB"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerListaTransacciones">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaInicio" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaFin" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="tipoTransaccion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="estadoTransaccion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedor" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="numResultados" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="totales" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerListaTransaccionesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="obtenerListaTransaccionesResult" type="tns:RetornoITEx"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerListaTransaccionesNif">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaInicio" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="fechaFin" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="tipoTransaccion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="estadoTransaccion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedor" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="numResultados" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="totales" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="obtenerListaTransaccionesNifResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="obtenerListaTransaccionesNifResult" type="tns:RetornoITNif"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="registrarReferenciasPagoTarjeta">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="referenciaClienteRecarga" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="refPreautorizacion" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="refPago" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="registrarReferenciasPagoTarjetaResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="1" name="registrarReferenciasPagoTarjetaResult" type="tns:RetornoRPT"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:complexType name="RetornoRE">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedor" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaOperador" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaAdministrativa" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="pin" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoRE" nillable="true" type="tns:RetornoRE"/>
+			<xs:complexType name="RetornoDE">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedor" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaOperador" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoDE" nillable="true" type="tns:RetornoDE"/>
+			<xs:complexType name="RetornoCE">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="estado" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoCE" nillable="true" type="tns:RetornoCE"/>
+			<xs:complexType name="RetornoCS">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldoLimite" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoCS" nillable="true" type="tns:RetornoCS"/>
+			<xs:complexType name="RetornoFD">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaFD" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="numRecargas" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importeRecargas" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="numDevoluciones" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importeDevoluciones" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="creditoConsumido" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="ticket" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoFD" nillable="true" type="tns:RetornoFD"/>
+			<xs:complexType name="RetornoTE">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoTE" nillable="true" type="tns:RetornoTE"/>
+			<xs:complexType name="RetornoAC">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="valorActivacion" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoAC" nillable="true" type="tns:RetornoAC"/>
+			<xs:complexType name="RetornoAT">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="password" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoAT" nillable="true" type="tns:RetornoAT"/>
+			<xs:complexType name="ArrayOfRetornoIT">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="RetornoIT" type="tns:RetornoIT"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfRetornoIT" nillable="true" type="tns:ArrayOfRetornoIT"/>
+			<xs:complexType name="ArrayOfRetornoIM">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="RetornoIM" type="tns:RetornoIM"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfRetornoIM" nillable="true" type="tns:ArrayOfRetornoIM"/>
+			<xs:complexType name="RetornoCT">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldoLimite" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="puntos" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="anticipado" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="beneficioMensualAcumulado" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoCT" nillable="true" type="tns:RetornoCT"/>
+			<xs:complexType name="RetornoAN">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="permiteAnticipo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="cantidadMaximaAnticipo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="comisionAnticipo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="condicionAnticipo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoAN" nillable="true" type="tns:RetornoAN"/>
+			<xs:complexType name="RetornoEA">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="estado" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedor" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaOperador" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="pin" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaAdministrativa" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensajeTicket" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importe" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="fechaHora" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="puntosTotalesCliente" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="puntosRecargaCliente" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="puntosTotalesTelefono" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="puntosRecargaTelefono" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="impuestoPorcentaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoEA" nillable="true" type="tns:RetornoEA"/>
+			<xs:complexType name="ArrayOfRetornoOP">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="RetornoOP" type="tns:RetornoOP"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfRetornoOP" nillable="true" type="tns:ArrayOfRetornoOP"/>
+			<xs:complexType name="RetornoOT">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="ticket" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="codigoQr" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoOT" nillable="true" type="tns:RetornoOT"/>
+			<xs:complexType name="RetornoOLI">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="listadoInformes" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoOLI" nillable="true" type="tns:RetornoOLI"/>
+			<xs:complexType name="RetornoSTD">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoSTD" nillable="true" type="tns:RetornoSTD"/>
+			<xs:complexType name="RetornoSTDEx">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="idiomas" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoSTDEx" nillable="true" type="tns:RetornoSTDEx"/>
+			<xs:complexType name="RetornoFCD">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="visible" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoFCD" nillable="true" type="tns:RetornoFCD"/>
+			<xs:complexType name="RetornoSO">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedor" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaOperador" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaAdministrativa" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="pin" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="ticket" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="codigoQr" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoSO" nillable="true" type="tns:RetornoSO"/>
+			<xs:complexType name="RetornoDS">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedor" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaOperador" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="ticket" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="refPagoTarjeta" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importe" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoDS" nillable="true" type="tns:RetornoDS"/>
+			<xs:complexType name="RetornoIA">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="parametrosJSON" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="ticket" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoIA" nillable="true" type="tns:RetornoIA"/>
+			<xs:complexType name="RetornoGCB">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="cuentas" nillable="true" type="tns:ArrayOfDatosGCB"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoGCB" nillable="true" type="tns:RetornoGCB"/>
+			<xs:complexType name="RetornoITEx">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="transacciones" nillable="true" type="tns:ArrayOfTransaccionItem"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="totales" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoITEx" nillable="true" type="tns:RetornoITEx"/>
+			<xs:complexType name="RetornoITNif">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="transacciones" nillable="true" type="tns:ArrayOfTransaccionDetail"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="totales" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoITNif" nillable="true" type="tns:RetornoITNif"/>
+			<xs:complexType name="RetornoRPT">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="mensaje" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoRPT" nillable="true" type="tns:RetornoRPT"/>
+			<xs:complexType name="RetornoIT">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="fechaHora" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="tipoTransaccion" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="estado" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="numeroTicket" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importe" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="baseImponible" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importeImpuestos" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="comision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importeComision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="baseImponibleComision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedorRecarga" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaPagoTarjeta" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="enlace" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoIT" nillable="true" type="tns:RetornoIT"/>
+			<xs:complexType name="RetornoIM">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="anticipado" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoIM" nillable="true" type="tns:RetornoIM"/>
+			<xs:complexType name="RetornoOP">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="orden" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="nombre" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="codigo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="tipoProducto" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importes" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="idfamilia" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="ordenfamilia" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="nombrefamilia" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="idsubfamilia" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="nombresubfamilia" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="tipoComision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="comision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="nombreImagen" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RetornoOP" nillable="true" type="tns:RetornoOP"/>
+			<xs:complexType name="ArrayOfDatosGCB">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="DatosGCB" type="tns:DatosGCB"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfDatosGCB" nillable="true" type="tns:ArrayOfDatosGCB"/>
+			<xs:complexType name="ArrayOfTransaccionItem">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="TransaccionItem" type="tns:TransaccionItem"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfTransaccionItem" nillable="true" type="tns:ArrayOfTransaccionItem"/>
+			<xs:complexType name="ArrayOfTransaccionDetail">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="TransaccionDetail" type="tns:TransaccionDetail"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfTransaccionDetail" nillable="true" type="tns:ArrayOfTransaccionDetail"/>
+			<xs:complexType name="DatosGCB">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="entidad" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="ccc" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="ventanilla" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="cajero" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="transferencia" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="imagen" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="imagenPeq" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="enlace" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="DatosGCB" nillable="true" type="tns:DatosGCB"/>
+			<xs:complexType name="TransaccionItem">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="vendorName" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="fechaHora" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="tipoTransaccion" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="estado" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="numeroTicket" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importe" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="baseImponible" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importeImpuestos" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="comision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importeComision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="baseImponibleComision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedorRecarga" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaPagoTarjeta" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="enlace" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="TransaccionItem" nillable="true" type="tns:TransaccionItem"/>
+			<xs:complexType name="TransaccionDetail">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="vendorName" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="idCliente" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="idTerminal" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="fechaHora" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="tipoTransaccion" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="saldo" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="estado" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="numeroTicket" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importe" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="baseImponible" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importeImpuestos" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="comision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="importeComision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="baseImponibleComision" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaCliente" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaProveedorRecarga" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="referenciaPagoTarjeta" type="xs:string"/>
+					<xs:element minOccurs="0" maxOccurs="1" name="enlace" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="TransaccionDetail" nillable="true" type="tns:TransaccionDetail"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="WSPIT_recarga_InputMessage">
+		<wsdl:part name="parameters" element="tns:recarga"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_header">
+		<wsdl:part name="request_header" element="tns:AuthHeader"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_recarga_OutputMessage">
+		<wsdl:part name="parameters" element="tns:recargaResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_devolucion_InputMessage">
+		<wsdl:part name="parameters" element="tns:devolucion"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_devolucion_OutputMessage">
+		<wsdl:part name="parameters" element="tns:devolucionResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_consultaEstado_InputMessage">
+		<wsdl:part name="parameters" element="tns:consultaEstado"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_consultaEstado_OutputMessage">
+		<wsdl:part name="parameters" element="tns:consultaEstadoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_consultaSaldo_InputMessage">
+		<wsdl:part name="parameters" element="tns:consultaSaldo"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_consultaSaldo_OutputMessage">
+		<wsdl:part name="parameters" element="tns:consultaSaldoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_finDia_InputMessage">
+		<wsdl:part name="parameters" element="tns:finDia"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_finDia_OutputMessage">
+		<wsdl:part name="parameters" element="tns:finDiaResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_test_InputMessage">
+		<wsdl:part name="parameters" element="tns:test"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_test_OutputMessage">
+		<wsdl:part name="parameters" element="tns:testResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_activacion_InputMessage">
+		<wsdl:part name="parameters" element="tns:activacion"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_activacion_OutputMessage">
+		<wsdl:part name="parameters" element="tns:activacionResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_altaTerminal_InputMessage">
+		<wsdl:part name="parameters" element="tns:altaTerminal"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_altaTerminal_OutputMessage">
+		<wsdl:part name="parameters" element="tns:altaTerminalResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_informeTransacciones_InputMessage">
+		<wsdl:part name="parameters" element="tns:informeTransacciones"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_informeTransacciones_OutputMessage">
+		<wsdl:part name="parameters" element="tns:informeTransaccionesResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_informeTransaccionesFiltrado_InputMessage">
+		<wsdl:part name="parameters" element="tns:informeTransaccionesFiltrado"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_informeTransaccionesFiltrado_OutputMessage">
+		<wsdl:part name="parameters" element="tns:informeTransaccionesFiltradoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_informeMovimientosBancarios_InputMessage">
+		<wsdl:part name="parameters" element="tns:informeMovimientosBancarios"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_informeMovimientosBancarios_OutputMessage">
+		<wsdl:part name="parameters" element="tns:informeMovimientosBancariosResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_consultaTerminal_InputMessage">
+		<wsdl:part name="parameters" element="tns:consultaTerminal"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_consultaTerminal_OutputMessage">
+		<wsdl:part name="parameters" element="tns:consultaTerminalResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_comprobarAnticipo_InputMessage">
+		<wsdl:part name="parameters" element="tns:comprobarAnticipo"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_comprobarAnticipo_OutputMessage">
+		<wsdl:part name="parameters" element="tns:comprobarAnticipoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_consultaEstadoAvanzada_InputMessage">
+		<wsdl:part name="parameters" element="tns:consultaEstadoAvanzada"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_consultaEstadoAvanzada_OutputMessage">
+		<wsdl:part name="parameters" element="tns:consultaEstadoAvanzadaResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_gestionMenuProductos_InputMessage">
+		<wsdl:part name="parameters" element="tns:gestionMenuProductos"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_gestionMenuProductos_OutputMessage">
+		<wsdl:part name="parameters" element="tns:gestionMenuProductosResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerTicket_InputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerTicket"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerTicket_OutputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerTicketResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerListadoInformes_InputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerListadoInformes"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerListadoInformes_OutputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerListadoInformesResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerInforme_InputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerInforme"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerInforme_OutputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerInformeResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_formularioVentaProducto_InputMessage">
+		<wsdl:part name="parameters" element="tns:formularioVentaProducto"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_formularioVentaProducto_OutputMessage">
+		<wsdl:part name="parameters" element="tns:formularioVentaProductoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_formularioCampoDependiente_InputMessage">
+		<wsdl:part name="parameters" element="tns:formularioCampoDependiente"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_formularioCampoDependiente_OutputMessage">
+		<wsdl:part name="parameters" element="tns:formularioCampoDependienteResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_formularioMenuProductos_InputMessage">
+		<wsdl:part name="parameters" element="tns:formularioMenuProductos"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_formularioMenuProductos_OutputMessage">
+		<wsdl:part name="parameters" element="tns:formularioMenuProductosResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_formularioFamilias_InputMessage">
+		<wsdl:part name="parameters" element="tns:formularioFamilias"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_formularioFamilias_OutputMessage">
+		<wsdl:part name="parameters" element="tns:formularioFamiliasResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_solicitud_InputMessage">
+		<wsdl:part name="parameters" element="tns:solicitud"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_solicitud_OutputMessage">
+		<wsdl:part name="parameters" element="tns:solicitudResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_devolucionSolicitud_InputMessage">
+		<wsdl:part name="parameters" element="tns:devolucionSolicitud"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_devolucionSolicitud_OutputMessage">
+		<wsdl:part name="parameters" element="tns:devolucionSolicitudResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerConversionMonedas_InputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerConversionMonedas"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerConversionMonedas_OutputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerConversionMonedasResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_getInformeAplicacion_InputMessage">
+		<wsdl:part name="parameters" element="tns:getInformeAplicacion"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_getInformeAplicacion_OutputMessage">
+		<wsdl:part name="parameters" element="tns:getInformeAplicacionResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_getIdiomas_InputMessage">
+		<wsdl:part name="parameters" element="tns:getIdiomas"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_getIdiomas_OutputMessage">
+		<wsdl:part name="parameters" element="tns:getIdiomasResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_getPantallasProducto_InputMessage">
+		<wsdl:part name="parameters" element="tns:getPantallasProducto"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_getPantallasProducto_OutputMessage">
+		<wsdl:part name="parameters" element="tns:getPantallasProductoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_getCuentasBancarias_InputMessage">
+		<wsdl:part name="parameters" element="tns:getCuentasBancarias"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_getCuentasBancarias_OutputMessage">
+		<wsdl:part name="parameters" element="tns:getCuentasBancariasResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerListaTransacciones_InputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerListaTransacciones"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerListaTransacciones_OutputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerListaTransaccionesResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerListaTransaccionesNif_InputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerListaTransaccionesNif"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_obtenerListaTransaccionesNif_OutputMessage">
+		<wsdl:part name="parameters" element="tns:obtenerListaTransaccionesNifResponse"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_registrarReferenciasPagoTarjeta_InputMessage">
+		<wsdl:part name="parameters" element="tns:registrarReferenciasPagoTarjeta"/>
+	</wsdl:message>
+	<wsdl:message name="WSPIT_registrarReferenciasPagoTarjeta_OutputMessage">
+		<wsdl:part name="parameters" element="tns:registrarReferenciasPagoTarjetaResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="WSPIT">
+		<wsdl:operation name="recarga">
+			<wsdl:input message="tns:WSPIT_recarga_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_recarga_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="devolucion">
+			<wsdl:input message="tns:WSPIT_devolucion_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_devolucion_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="consultaEstado">
+			<wsdl:input message="tns:WSPIT_consultaEstado_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_consultaEstado_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="consultaSaldo">
+			<wsdl:input message="tns:WSPIT_consultaSaldo_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_consultaSaldo_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="finDia">
+			<wsdl:input message="tns:WSPIT_finDia_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_finDia_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="test">
+			<wsdl:input message="tns:WSPIT_test_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_test_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="activacion">
+			<wsdl:input message="tns:WSPIT_activacion_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_activacion_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="altaTerminal">
+			<wsdl:input message="tns:WSPIT_altaTerminal_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_altaTerminal_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="informeTransacciones">
+			<wsdl:input message="tns:WSPIT_informeTransacciones_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_informeTransacciones_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="informeTransaccionesFiltrado">
+			<wsdl:input message="tns:WSPIT_informeTransaccionesFiltrado_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_informeTransaccionesFiltrado_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="informeMovimientosBancarios">
+			<wsdl:input message="tns:WSPIT_informeMovimientosBancarios_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_informeMovimientosBancarios_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="consultaTerminal">
+			<wsdl:input message="tns:WSPIT_consultaTerminal_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_consultaTerminal_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="comprobarAnticipo">
+			<wsdl:input message="tns:WSPIT_comprobarAnticipo_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_comprobarAnticipo_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="consultaEstadoAvanzada">
+			<wsdl:input message="tns:WSPIT_consultaEstadoAvanzada_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_consultaEstadoAvanzada_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="gestionMenuProductos">
+			<wsdl:input message="tns:WSPIT_gestionMenuProductos_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_gestionMenuProductos_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerTicket">
+			<wsdl:input message="tns:WSPIT_obtenerTicket_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_obtenerTicket_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerListadoInformes">
+			<wsdl:input message="tns:WSPIT_obtenerListadoInformes_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_obtenerListadoInformes_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerInforme">
+			<wsdl:input message="tns:WSPIT_obtenerInforme_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_obtenerInforme_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="formularioVentaProducto">
+			<wsdl:input message="tns:WSPIT_formularioVentaProducto_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_formularioVentaProducto_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="formularioCampoDependiente">
+			<wsdl:input message="tns:WSPIT_formularioCampoDependiente_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_formularioCampoDependiente_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="formularioMenuProductos">
+			<wsdl:input message="tns:WSPIT_formularioMenuProductos_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_formularioMenuProductos_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="formularioFamilias">
+			<wsdl:input message="tns:WSPIT_formularioFamilias_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_formularioFamilias_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="solicitud">
+			<wsdl:input message="tns:WSPIT_solicitud_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_solicitud_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="devolucionSolicitud">
+			<wsdl:input message="tns:WSPIT_devolucionSolicitud_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_devolucionSolicitud_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerConversionMonedas">
+			<wsdl:input message="tns:WSPIT_obtenerConversionMonedas_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_obtenerConversionMonedas_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="getInformeAplicacion">
+			<wsdl:input message="tns:WSPIT_getInformeAplicacion_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_getInformeAplicacion_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="getIdiomas">
+			<wsdl:input message="tns:WSPIT_getIdiomas_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_getIdiomas_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPantallasProducto">
+			<wsdl:input message="tns:WSPIT_getPantallasProducto_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_getPantallasProducto_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="getCuentasBancarias">
+			<wsdl:input message="tns:WSPIT_getCuentasBancarias_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_getCuentasBancarias_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerListaTransacciones">
+			<wsdl:input message="tns:WSPIT_obtenerListaTransacciones_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_obtenerListaTransacciones_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerListaTransaccionesNif">
+			<wsdl:input message="tns:WSPIT_obtenerListaTransaccionesNif_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_obtenerListaTransaccionesNif_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="registrarReferenciasPagoTarjeta">
+			<wsdl:input message="tns:WSPIT_registrarReferenciasPagoTarjeta_InputMessage"/>
+			<wsdl:output message="tns:WSPIT_registrarReferenciasPagoTarjeta_OutputMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="BasicHttpBinding" type="tns:WSPIT">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="recarga">
+			<soap:operation soapAction="WebServicePIT/WSPIT/recarga" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="devolucion">
+			<soap:operation soapAction="WebServicePIT/WSPIT/devolucion" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="consultaEstado">
+			<soap:operation soapAction="WebServicePIT/WSPIT/consultaEstado" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="consultaSaldo">
+			<soap:operation soapAction="WebServicePIT/WSPIT/consultaSaldo" style="document"/>
+			<wsdl:input>
+				<soap:body use="encoded"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="finDia">
+			<soap:operation soapAction="WebServicePIT/WSPIT/finDia" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="test">
+			<soap:operation soapAction="WebServicePIT/WSPIT/test" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="activacion">
+			<soap:operation soapAction="WebServicePIT/WSPIT/activacion" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="altaTerminal">
+			<soap:operation soapAction="WebServicePIT/WSPIT/altaTerminal" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="informeTransacciones">
+			<soap:operation soapAction="WebServicePIT/WSPIT/informeTransacciones" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="informeTransaccionesFiltrado">
+			<soap:operation soapAction="WebServicePIT/WSPIT/informeTransaccionesFiltrado" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="informeMovimientosBancarios">
+			<soap:operation soapAction="WebServicePIT/WSPIT/informeMovimientosBancarios" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="consultaTerminal">
+			<soap:operation soapAction="WebServicePIT/WSPIT/consultaTerminal" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="comprobarAnticipo">
+			<soap:operation soapAction="WebServicePIT/WSPIT/comprobarAnticipo" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="consultaEstadoAvanzada">
+			<soap:operation soapAction="WebServicePIT/WSPIT/consultaEstadoAvanzada" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="gestionMenuProductos">
+			<soap:operation soapAction="WebServicePIT/WSPIT/gestionMenuProductos" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerTicket">
+			<soap:operation soapAction="WebServicePIT/WSPIT/obtenerTicket" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerListadoInformes">
+			<soap:operation soapAction="WebServicePIT/WSPIT/obtenerListadoInformes" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerInforme">
+			<soap:operation soapAction="WebServicePIT/WSPIT/obtenerInforme" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="formularioVentaProducto">
+			<soap:operation soapAction="WebServicePIT/WSPIT/formularioVentaProducto" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="formularioCampoDependiente">
+			<soap:operation soapAction="WebServicePIT/WSPIT/formularioCampoDependiente" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="formularioMenuProductos">
+			<soap:operation soapAction="WebServicePIT/WSPIT/formularioMenuProductos" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="formularioFamilias">
+			<soap:operation soapAction="WebServicePIT/WSPIT/formularioFamilias" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="solicitud">
+			<soap:operation soapAction="WebServicePIT/WSPIT/solicitud" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="devolucionSolicitud">
+			<soap:operation soapAction="WebServicePIT/WSPIT/devolucionSolicitud" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerConversionMonedas">
+			<soap:operation soapAction="WebServicePIT/WSPIT/obtenerConversionMonedas" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getInformeAplicacion">
+			<soap:operation soapAction="WebServicePIT/WSPIT/getInformeAplicacion" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getIdiomas">
+			<soap:operation soapAction="WebServicePIT/WSPIT/getIdiomas" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPantallasProducto">
+			<soap:operation soapAction="WebServicePIT/WSPIT/getPantallasProducto" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCuentasBancarias">
+			<soap:operation soapAction="WebServicePIT/WSPIT/getCuentasBancarias" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerListaTransacciones">
+			<soap:operation soapAction="WebServicePIT/WSPIT/obtenerListaTransacciones" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerListaTransaccionesNif">
+			<soap:operation soapAction="WebServicePIT/WSPIT/obtenerListaTransaccionesNif" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="registrarReferenciasPagoTarjeta">
+			<soap:operation soapAction="WebServicePIT/WSPIT/registrarReferenciasPagoTarjeta" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:WSPIT_header" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="IWSPIT">
+		<wsdl:port name="BasicHttpBinding" binding="tns:BasicHttpBinding">
+			<soap:address location="https://172.20.220.145:20121/ES/WSPIT11.asmx"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
